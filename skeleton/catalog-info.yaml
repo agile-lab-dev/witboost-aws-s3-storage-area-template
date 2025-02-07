@@ -1,0 +1,42 @@
+{% set domainNameNormalized = values.domain | replace(r/domain:| |-/, "") %}
+{% set dataProductNameNormalized = values.dataproduct.split(".")[1] | replace(r/ |-/g, "") %}
+{% set dataProductMajorVersion = values.identifier.split(".")[2] %}
+
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ${{ values.identifier }}
+  description: |
+      "${{ values.description }}"
+  annotations:
+    gitlab.com/project-slug: ${{ values.owner + "/" + values.repo }}
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - storage
+spec:
+  type: storage
+  lifecycle: experimental
+  owner: ${{ values.developmentGroup }}
+  system: ${{ values.dataproduct }}
+  domain: ${{ values.domain }}
+  mesh:
+    name: ${{ values.name }}
+    fullyQualifiedName: ${{ values.domainName }} - ${{ values.dataproductName }} - version ${{ dataProductMajorVersion }} - ${{ values.name }}
+    description: ${{ values.description | dump }}
+    kind: storage
+    version: ${{ dataProductMajorVersion + ".0.0" }}
+    infrastructureTemplateId: ${{ values.infrastructureTemplateId }}
+    useCaseTemplateId: ${{ values.useCaseTemplateId }}
+    dependsOn: {% if values.dependsOn | length > 0 %}{% for i in values.dependsOn %}
+      - ${{ i }}{% endfor %}{% else %}[]{% endif %}
+    platform: AWS
+    technology: S3
+    storageType: Files
+    tags: {% if values.tags | length > 0 %}{% for i in values.tags %}
+      - tagFQN: ${{ i }}
+        source: Tag
+        labelType: Manual
+        state: Confirmed{% endfor %}{% else %}[]{% endif %}
+    specific:
+      region: ${{ values.region | dump }}
+      multipleVersion: ${{ values.multipleVersion }}
