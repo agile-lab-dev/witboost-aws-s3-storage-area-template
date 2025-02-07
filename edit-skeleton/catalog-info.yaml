@@ -1,0 +1,21 @@
+{% set domainNameNormalized = values.domain | replace(r/domain:| |-/, "") %}
+{% set dataProductNameNormalized = values.dataproduct.split(".")[1] | replace(r/ |-/g, "") %}
+{% set dataProductMajorVersion = values.identifier.split(".")[2] %}
+
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  description: ${{ values.description | dump }}
+spec:
+  type: storage
+  lifecycle: experimental
+  owner: ${{ values.developmentGroup }}
+  mesh:
+    description: ${{ values.description | dump }}
+    dependsOn: {% if values.dependsOn | length > 0 %}{% for i in values.dependsOn %}
+      - ${{ i }}{% endfor %}{% else %}[]{% endif %}
+    tags: {% if values.tags | length > 0 %}{% for i in values.tags %}
+      - tagFQN: ${{ i }}
+        source: Tag
+        labelType: Manual
+        state: Confirmed{% endfor %}{% else %}[]{% endif %}
