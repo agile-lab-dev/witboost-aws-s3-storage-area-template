@@ -39,4 +39,17 @@ spec:
         state: Confirmed{% endfor %}{% else %}[]{% endif %}
     specific:
       region: ${{ values.region | dump }}
-      multipleVersion: ${{ values.multipleVersion }}
+      serverSideEncryption: ${{ values.serverSideEncryption | dump }}
+      multipleVersion: ${{ values.multipleVersion | dump }}
+      lifeCycleConfiguration:
+        permanentlyDelete: {% if values.permanentlyDeleteEnabled %}
+          daysAfterBecomeNonCurrent: ${{ values.daysAfterBecomeNonCurrent | dump }}
+          numberOfVersionsToRetain: ${{ values.numberOfVersionsToRetain | dump }}
+        {% else %} null {% endif %}
+      intelligentTieringConfiguration:
+        enabled: ${{ values.intelligentTieringConfigurationEnabled | dump }}
+        archiveAccessTierEnabled: ${{ values.archiveAccessTierEnabled | dump }}
+        archiveAccessTierDays: ${{ values.archiveAccessTierDays | dump }}
+        deepArchiveAccessTierEnabled: ${{ values.deepArchiveAccessTierEnabled | dump }}
+        deepArchiveAccessTierDays: ${{ values.deepArchiveAccessTierDays | dump }}
+      bucketTag: Managed in environments config

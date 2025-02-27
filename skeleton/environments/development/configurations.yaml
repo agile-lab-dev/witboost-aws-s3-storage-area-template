@@ -1,0 +1,12 @@
+specific:
+  bucketTag:
+    - key: data product
+      value: ${{ values.dataproductName }}
+    - key: domain
+      value: ${{ values.domainName }}
+    - key: environment
+      value: development
+    {% if values.tags | length > 0 %}{% for i in values.tags %}
+    - key: witboostTag{{ loop.index }}
+      value: ${{ i }}
+    {% endfor %}{% endif %}
