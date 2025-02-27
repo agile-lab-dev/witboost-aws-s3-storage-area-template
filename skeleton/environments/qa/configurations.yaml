@@ -9,6 +9,6 @@ specific:
     - key: environment
       value: qa
     {% if values.tags | length > 0 %}{% for i in values.tags %}
-    - key: witboostTag{{ loop.index0 }}
+    - key: witboostTag${{ loop.index }}
       value: ${{ i }}
     {% endfor %}{% endif %}
