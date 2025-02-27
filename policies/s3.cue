@@ -11,7 +11,7 @@ let majorVersion = splits[5]
 
 
 #OM_Tag: {
-	tagFQN:       string
+	tagFQN:       string & =~"^[a-zA-Z0-9 +=._:/@-]+$"
 	description?: string | null
 	source:       string & =~"(?i)^(Tag|Glossary)$"
 	labelType:    string & =~"(?i)^(Manual|Propagated|Automated|Derived)$"
@@ -37,8 +37,8 @@ let majorVersion = splits[5]
 }
 
 #BucketTag: {
-	key!:       string
-	value!: 		string
+	key!:   string & =~"^[a-zA-Z0-9 +=._:/@-]+$"
+	value!: string & =~"^[a-zA-Z0-9 +=._:/@-]+$"
 }
 
 #S3Specific: {
