@@ -24,11 +24,11 @@ let majorVersion = splits[5]
 }
 
 #IntelligentTieringConfiguration: {
-	enabled!: 											bool
-	archiveAccessTierEnabled!: 			bool
-	archiveAccessTierDays: 					int & >=90 & <=730
+	enabled!:                       bool
+	archiveAccessTierEnabled!: 	bool
+	archiveAccessTierDays: 		int & >=90 & <=730
 	deepArchiveAccessTierEnabled!: 	bool
-	deepArchiveAccessTierDays: 			int & >=180 & <=730
+	deepArchiveAccessTierDays: 	int & >=180 & <=730
 }
 
 #PermanentlyDelete: {
