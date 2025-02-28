@@ -164,11 +164,9 @@ spec:
 
           useCaseTemplateId: urn:dmb:utm:aws-s3-template:0.0.0
           infrastructureTemplateId: urn:dmb:itm:aws-s3-tech-adapter:0
-          destination: &destination 'gitlab.com?owner=AgileFactory%2FWitboost.Mesh%2Fiac%2Fqa%2Fmesh.repository%2F${{ parameters.domain | replace(r/domain:| |-/, "") }}%2F${{ parameters.dataproduct.split(".")[1] | replace(r/ |-/g, "") }}&repo=${{ parameters.name.split(" ") | join("") | lower }}'
-          #          destination: &destination 'gitlab.com?owner=AgileDMBSandbox%2F${{orgname}}%2Fmesh.repository%2F${{ parameters.domain | replace(r/domain:| |-/, "") }}%2F${{ parameters.dataproduct.split(".")[1] | replace(r/ |-/g, "") }}&repo=${{ parameters.name.split(" ") | join("") | lower }}'
+          destination: &destination 'gitlab.com?owner=AgileDMBSandbox%2F${{orgname}}%2Fmesh.repository%2F${{ parameters.domain | replace(r/domain:| |-/, "") }}%2F${{ parameters.dataproduct.split(".")[1] | replace(r/ |-/g, "") }}&repo=${{ parameters.name.split(" ") | join("") | lower }}'
           displayName: '${{ parameters.displayName }}'
-          owner: 'AgileFactory/Witboost.Mesh/iac/qa/mesh.repository/${{ parameters.domain | replace(r/domain:| |-/, "") }}/${{ parameters.dataproduct.split(".")[1] | replace(r/ |-/g, "") }}'
-          #          owner: 'AgileDMBSandbox%2F${{orgname}}%2Fmesh.repository%2F${{ parameters.domain | replace(r/domain:| |-/, "") }}%2F${{ parameters.dataproduct.split(".")[1] | replace(r/ |-/g, "") }}'
+          owner: 'AgileDMBSandbox%2F${{orgname}}%2Fmesh.repository%2F${{ parameters.domain | replace(r/domain:| |-/, "") }}%2F${{ parameters.dataproduct.split(".")[1] | replace(r/ |-/g, "") }}'
           repo: '${{ parameters.name.split(" ") | join("") | lower }}'
           artifact_id: '${{ parameters.name }}'
           useCaseTemplateVersion: 0.0.0
