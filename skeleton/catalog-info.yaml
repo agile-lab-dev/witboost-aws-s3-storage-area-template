@@ -52,4 +52,4 @@ spec:
         archiveAccessTierDays: ${{ values.archiveAccessTierDays | dump }}
         deepArchiveAccessTierEnabled: ${{ values.deepArchiveAccessTierEnabled | dump }}
         deepArchiveAccessTierDays: ${{ values.deepArchiveAccessTierDays | dump }}
-      bucketTag: Managed in environments config
+      bucketTags: Managed in environments config

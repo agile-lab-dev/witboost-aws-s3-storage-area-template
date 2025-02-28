@@ -36,7 +36,7 @@ let majorVersion = splits[5]
 	numberOfVersionsToRetain: 	int & >=1 & <=100
 }
 
-#BucketTag: {
+#bucketTags: {
 	key!:   string & =~"^[a-zA-Z0-9 +=._:/@-]+$"
 	value!: string & =~"^[a-zA-Z0-9 +=._:/@-]+$"
 }
@@ -47,7 +47,7 @@ let majorVersion = splits[5]
 	multipleVersion: bool
 	lifeCycleConfiguration!: #LifeCycleConfiguration
 	intelligentTieringConfiguration!: #IntelligentTieringConfiguration
-	bucketTag: [...#BucketTag]
+	bucketTags: [...#bucketTags]
 }
 
 id:                       #ComponentId
