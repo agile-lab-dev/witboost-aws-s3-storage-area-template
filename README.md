@@ -1,6 +1,6 @@
 ## Overview
 
-Use this template to automatically create an S3 bucket for a Data Product. If the bucket does not exist, it will be created. Within the bucket, a dedicated folder will be generated for each S3 storage area.
+Use this template to automatically manage an S3 bucket for a Data Product. If the bucket does not exist will be created, otherwise it will be updated.
 
 ### What’s a Storage Area?
 

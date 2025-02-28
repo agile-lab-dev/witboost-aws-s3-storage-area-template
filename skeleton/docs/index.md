@@ -21,11 +21,22 @@
 | **Region**             | ${{ values.region }}          |
 | **Multiple versions ** | ${{ values.multipleVersion }} |
 
+---
+## Lifecycle Permanently Delete Configuration
+
+{% if values.permanentlyDeleteEnabled %}
+| **Field Name**                           | **Value**                               |
+|------------------------------------------|-----------------------------------------|
+| **Days after objects become noncurrent** | ${{ values.daysAfterBecomeNonCurrent }} |
+| **Number of newer versions to retain**   | ${{ values.numberOfVersionsToRetain }}  |
+
+{% else %} Disabled {% endif %}
+
+---
 
 ## Deployment details 
 
-Deploy this component to automatically create an S3 bucket for the Data Product if it does not already exist.
-A dedicated folder for this storage area will be created within the bucket.
+Deploy this component to automatically create or update an S3 bucket for the Data Product.
 
 
 

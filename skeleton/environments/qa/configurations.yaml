@@ -1,0 +1,14 @@
+from jinja2 import Template
+
+specific:
+  bucketTags:
+    - key: data product
+      value: ${{ values.dataproductName }}
+    - key: domain
+      value: ${{ values.domainName }}
+    - key: environment
+      value: qa
+    {% if values.tags | length > 0 %}{% for i in values.tags %}
+    - key: witboostTag${{ loop.index }}
+      value: ${{ i }}
+    {% endfor %}{% endif %}
