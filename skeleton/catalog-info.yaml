@@ -46,4 +46,9 @@ spec:
           daysAfterBecomeNonCurrent: ${{ values.daysAfterBecomeNonCurrent | dump }}
           numberOfVersionsToRetain: ${{ values.numberOfVersionsToRetain | dump }}
         {% else %} null {% endif %}
+      intelligentTieringConfiguration:
+        archiveAccessTierEnabled: ${{ values.archiveAccessTierEnabled | dump }}
+        archiveAccessTierDays: ${{ values.archiveAccessTierDays | dump }}
+        deepArchiveAccessTierEnabled: ${{ values.deepArchiveAccessTierEnabled | dump }}
+        deepArchiveAccessTierDays: ${{ values.deepArchiveAccessTierDays | dump }}
       bucketTags: Managed in environments config

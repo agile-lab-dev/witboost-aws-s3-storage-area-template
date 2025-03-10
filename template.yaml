@@ -156,7 +156,6 @@ spec:
           permanentlyDeleteEnabled: true
           daysAfterBecomeNonCurrent: 30
           numberOfVersionsToRetain: 10
-          intelligentTieringConfigurationEnabled: true
           archiveAccessTierEnabled: true
           archiveAccessTierDays: 90
           deepArchiveAccessTierEnabled: true
