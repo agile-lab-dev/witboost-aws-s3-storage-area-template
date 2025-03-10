@@ -1,12 +1,8 @@
 import "strings"
 
-let splits = strings.Split(id, ":")
-let domain = splits[3]
-let majorVersion = splits[5]
-
 #ComponentVersion: 	string & =~"^([0-9]+\\.[0-9]+\\..+)$"
 #Id:               	string & =~"^[a-zA-Z0-9:._\\-]+$"
-#ComponentId:      	#Id & =~"^urn:dmb:cmp:\(domain):[a-zA-Z0-9_\\-]+:\(majorVersion):[a-zA-Z0-9_\\-]+$"
+#ComponentId:      	#Id & =~"^urn:dmb:cmp:[a-zA-Z0-9:._\\-]+:[a-zA-Z0-9_\\-]+:[a-zA-Z0-9:._\\-]+:[a-zA-Z0-9_\\-]+$"
 #AWSRegion: 		string & =~"(?i)^(eu-west-1|eu-west-2|eu-west-3|eu-central-1|eu-north-1|eu-south-1|eu-south-2|eu-central-2)$"
 
 
@@ -23,6 +19,20 @@ let majorVersion = splits[5]
 	permanentlyDelete: null | #PermanentlyDelete
 }
 
+#IntelligentTieringConfiguration: {
+	archiveAccessTierEnabled!: bool
+	archiveAccessTierDays: int
+	deepArchiveAccessTierEnabled!: bool
+	deepArchiveAccessTierDays: int
+
+	if archiveAccessTierEnabled {
+		archiveAccessTierDays: int & >= 90 & <= 730
+	}
+
+	if deepArchiveAccessTierEnabled {
+		deepArchiveAccessTierDays:   int & >= 180 & <= 730
+	}
+}
 
 #PermanentlyDelete: {
 	daysAfterBecomeNonCurrent: 	int & >0
@@ -39,6 +49,7 @@ let majorVersion = splits[5]
 	serverSideEncryption!: 		string & =~"^(AES256|AWS_KMS)$"
 	multipleVersion: 			bool
 	lifeCycleConfiguration!: 	#LifeCycleConfiguration
+	intelligentTieringConfiguration!: #IntelligentTieringConfiguration
 	bucketTags: 				[...#BucketTags]
 }
 

@@ -34,6 +34,16 @@
 
 ---
 
+## Intelligent Tiering Configuration
+
+| **Field Name**                       | **Value**                                            |
+|--------------------------------------|------------------------------------------------------|
+| **Archive Access Tier Enabled**      | ${{ values.archiveAccessTierEnabled }}               |
+| **Archive Access Tier Days**         | ${{ values.archiveAccessTierDays }}                  |
+| **Deep Archive Access Tier Enabled** | ${{ values.deepArchiveAccessTierEnabled }}           |
+| **Deep Archive Access Tier Days**    | ${{ values.deepArchiveAccessTierDays }}              |
+
+
 ## Deployment details 
 
 Deploy this component to automatically create or update an S3 bucket for the Data Product.
