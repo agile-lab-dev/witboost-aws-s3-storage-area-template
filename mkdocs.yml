@@ -1,0 +1,8 @@
+site_name: "AWS S3 Storage Area Template"
+site_description: "Create an S3 Bucket Storage Area"
+
+nav:
+  - Template Usage: docs/index.md
+
+plugins:
+  - techdocs-core
