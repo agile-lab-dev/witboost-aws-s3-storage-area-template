@@ -1,5 +1,3 @@
-from jinja2 import Template
-
 specific:
   bucketTags:
     - key: data product
